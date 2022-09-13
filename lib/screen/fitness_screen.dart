@@ -10,11 +10,13 @@ class FitnessScreen extends StatefulWidget {
 class _FitnessScreenState extends State<FitnessScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text(
-            "Fitness"
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Fitness"),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: Text("Fitness"),
       ),
     );
   }

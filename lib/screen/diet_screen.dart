@@ -10,11 +10,13 @@ class DietScreen extends StatefulWidget {
 class _DietScreenState extends State<DietScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text(
-            "Diet"
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Diet"),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: Text("Diet"),
       ),
     );
   }

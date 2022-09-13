@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
             primary: Colors.black,
             secondary: Colors.white)),
       home: DefaultTabController(
-        length: 4,
+          length: 4,
           child: Scaffold(
             resizeToAvoidBottomInset: false,
             body: TabBarView(
@@ -33,10 +33,6 @@ class MyApp extends StatelessWidget {
                 DietScreen(),
                 ProfileScreen()
               ],
-            ),
-            appBar: AppBar(
-              title: Text('fitness record'),
-              centerTitle: true,
             ),
             bottomNavigationBar: BottomBar(),
           )
