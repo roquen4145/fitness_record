@@ -26,7 +26,6 @@ class MyApp extends StatelessWidget {
           child: Scaffold(
             resizeToAvoidBottomInset: false,
             body: TabBarView(
-              physics: NeverScrollableScrollPhysics(),
               children: [
                 HomeScreen(),
                 FitnessScreen(),
