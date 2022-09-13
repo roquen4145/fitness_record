@@ -34,6 +34,10 @@ class MyApp extends StatelessWidget {
                 ProfileScreen()
               ],
             ),
+            appBar: AppBar(
+              title: Text('fitness record'),
+              centerTitle: true,
+            ),
             bottomNavigationBar: BottomBar(),
           )
       )
