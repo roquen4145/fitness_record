@@ -8,7 +8,7 @@ class BottomBar extends StatelessWidget {
     return Container(
         color: Colors.black,
         child: Container(
-          height: 50,
+          height: 60,
           child: TabBar(
             labelColor: Colors.white,
             unselectedLabelColor: Colors.white60,
@@ -19,27 +19,27 @@ class BottomBar extends StatelessWidget {
                       Icons.home,
                       size: 18
                   ),
-                  child: Text('홈', style: TextStyle(fontSize:8))),
+                  child: Text('홈', style: TextStyle(fontSize:11))),
               Tab(
                   icon: Icon(
-                      Icons.home,
+                      Icons.fitness_center,
                       size: 18
                   ),
-                  child: Text('홈', style: TextStyle(fontSize:8))),
+                  child: Text('운동', style: TextStyle(fontSize:11))),
 
               Tab(
                   icon: Icon(
-                      Icons.home,
+                      Icons.food_bank,
                       size: 18
                   ),
-                  child: Text('홈', style: TextStyle(fontSize:8))),
+                  child: Text('식단', style: TextStyle(fontSize:11))),
 
               Tab(
                   icon: Icon(
-                      Icons.home,
+                      Icons.person,
                       size: 18
                   ),
-                  child: Text('홈', style: TextStyle(fontSize:8))),
+                  child: Text('프로필', style: TextStyle(fontSize:11))),
 
             ],
           ),
