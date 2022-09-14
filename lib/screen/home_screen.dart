@@ -15,8 +15,77 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text("Fitness Record"),
         centerTitle: true,
       ),
-      body: Center(
-        child: Text("Home"),
+      body: Column(
+        children: [
+          Padding(padding: EdgeInsets.all(10)),
+          Text(
+            "Workout Plan",
+            style: TextStyle(fontSize: 18),
+          ),
+          Padding(padding: EdgeInsets.all(10)),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(child: Column(
+                children: [
+                  Text("Mon"),
+                  Padding(padding: EdgeInsets.only(top: 5)),
+                  Text("상체"),
+                  Icon(Icons.check)
+                ],
+              )),
+              Container(child: Column(
+                children: [
+                  Text("Thu"),
+                  Padding(padding: EdgeInsets.only(top: 5)),
+                  Text("하체"),
+                  Icon(Icons.check)
+                ],
+              )),
+              Container(child: Column(
+                children: [
+                  Text("Wed"),
+                  Padding(padding: EdgeInsets.only(top: 5)),
+                  Text("휴식"),
+                  Icon(Icons.check)
+                ],
+              )),
+              Container(child: Column(
+                children: [
+                  Text("Thu"),
+                  Padding(padding: EdgeInsets.only(top: 5)),
+                  Text("상체"),
+                  Icon(Icons.check)
+                ],
+              )),
+              Container(child: Column(
+                children: [
+                  Text("Fri"),
+                  Padding(padding: EdgeInsets.only(top: 5)),
+                  Text("하체"),
+                  Icon(Icons.close)
+                ],
+              )),
+              Container(child: Column(
+                children: [
+                  Text("Sat"),
+                  Padding(padding: EdgeInsets.only(top: 5)),
+                  Text("휴식"),
+                  Icon(Icons.close)
+                ],
+              )),
+              Container(child: Column(
+                children: [
+                  Text("Sun"),
+                  Padding(padding: EdgeInsets.only(top: 5)),
+                  Text("휴식"),
+                  Icon(Icons.close)
+                ],
+              )),
+            ],
+          ),
+          Padding(padding: EdgeInsets.all(20))
+        ],
       ),
     );
   }
