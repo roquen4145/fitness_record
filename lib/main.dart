@@ -4,9 +4,10 @@ import 'package:fitness_record/screen/home_screen.dart';
 import 'package:fitness_record/screen/profile_screen.dart';
 import 'package:fitness_record/widget/bottom_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 void main() {
-  runApp(const MyApp());
+  initializeDateFormatting().then((_) => runApp(MyApp()));
 }
 
 class MyApp extends StatelessWidget {

@@ -27,7 +27,8 @@ class _HomeScreenState extends State<HomeScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Container(child: Column(
+              Container(
+                  child: Column(
                 children: [
                   Text("Mon"),
                   Padding(padding: EdgeInsets.only(top: 5)),
@@ -35,7 +36,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   Icon(Icons.check)
                 ],
               )),
-              Container(child: Column(
+              Container(
+                  child: Column(
                 children: [
                   Text("Thu"),
                   Padding(padding: EdgeInsets.only(top: 5)),
@@ -43,7 +45,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   Icon(Icons.check)
                 ],
               )),
-              Container(child: Column(
+              Container(
+                  child: Column(
                 children: [
                   Text("Wed"),
                   Padding(padding: EdgeInsets.only(top: 5)),
@@ -51,7 +54,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   Icon(Icons.check)
                 ],
               )),
-              Container(child: Column(
+              Container(
+                  child: Column(
                 children: [
                   Text("Thu"),
                   Padding(padding: EdgeInsets.only(top: 5)),
@@ -59,7 +63,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   Icon(Icons.check)
                 ],
               )),
-              Container(child: Column(
+              Container(
+                  child: Column(
                 children: [
                   Text("Fri"),
                   Padding(padding: EdgeInsets.only(top: 5)),
@@ -67,7 +72,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   Icon(Icons.close)
                 ],
               )),
-              Container(child: Column(
+              Container(
+                  child: Column(
                 children: [
                   Text("Sat"),
                   Padding(padding: EdgeInsets.only(top: 5)),
@@ -75,7 +81,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   Icon(Icons.close)
                 ],
               )),
-              Container(child: Column(
+              Container(
+                  child: Column(
                 children: [
                   Text("Sun"),
                   Padding(padding: EdgeInsets.only(top: 5)),
@@ -86,7 +93,17 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
           Padding(padding: EdgeInsets.all(20)),
-          TableCalendar(focusedDay: DateTime.now(), firstDay: DateTime.utc(2022,01,01), lastDay: DateTime.utc(2030,12,31))
+          Text(
+            "Workout Record",
+            style: TextStyle(fontSize: 18),
+          ),
+          TableCalendar(
+            focusedDay: DateTime.now(),
+            firstDay: DateTime.utc(2022, 01, 01),
+            lastDay: DateTime.utc(2030, 12, 31),
+            locale: 'ko-KR',
+            daysOfWeekHeight: 30,
+          )
         ],
       ),
     );
