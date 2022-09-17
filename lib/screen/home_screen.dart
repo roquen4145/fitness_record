@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -84,7 +85,8 @@ class _HomeScreenState extends State<HomeScreen> {
               )),
             ],
           ),
-          Padding(padding: EdgeInsets.all(20))
+          Padding(padding: EdgeInsets.all(20)),
+          TableCalendar(focusedDay: DateTime.now(), firstDay: DateTime.utc(2022,01,01), lastDay: DateTime.utc(2030,12,31))
         ],
       ),
     );
