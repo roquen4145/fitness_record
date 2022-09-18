@@ -103,6 +103,10 @@ class _HomeScreenState extends State<HomeScreen> {
             lastDay: DateTime.utc(2030, 12, 31),
             locale: 'ko-KR',
             daysOfWeekHeight: 30,
+            headerStyle: HeaderStyle(
+              formatButtonVisible: false,
+              titleCentered: true,
+            ),
           )
         ],
       ),
