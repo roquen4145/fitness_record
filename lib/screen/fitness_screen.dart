@@ -15,8 +15,63 @@ class _FitnessScreenState extends State<FitnessScreen> {
         title: Text("Fitness"),
         centerTitle: true,
       ),
-      body: Center(
-        child: Text("Fitness"),
+      body: Column(
+        children: [
+          Text("Fitness List", style: TextStyle(fontSize: 18)),
+          // replace with firebase
+          Table(
+            defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+            columnWidths: {0: FlexColumnWidth(), 1: FlexColumnWidth()},
+            border: TableBorder.all(style: BorderStyle.none),
+            children: [
+              TableRow(children: [
+                Text("운동이름",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center),
+                Text("부위",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center),
+                Text("RM",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center),
+              ]),
+              TableRow(
+                  children: [
+                Text("벤치 프레스",
+                    style: TextStyle(fontSize: 10),
+                    textAlign: TextAlign.center),
+                Text("가슴",
+                    style: TextStyle(fontSize: 10),
+                    textAlign: TextAlign.center),
+                Text("100",
+                    style: TextStyle(fontSize: 10),
+                    textAlign: TextAlign.center),
+              ]),
+              TableRow(children: [
+                Text("데드리프트",
+                    style: TextStyle(fontSize: 10),
+                    textAlign: TextAlign.center),
+                Text("등",
+                    style: TextStyle(fontSize: 10),
+                    textAlign: TextAlign.center),
+                Text("100",
+                    style: TextStyle(fontSize: 10),
+                    textAlign: TextAlign.center),
+              ]),
+              TableRow(children: [
+                Text("스쿼트",
+                    style: TextStyle(fontSize: 10),
+                    textAlign: TextAlign.center),
+                Text("허벅지",
+                    style: TextStyle(fontSize: 10),
+                    textAlign: TextAlign.center),
+                Text("100",
+                    style: TextStyle(fontSize: 10),
+                    textAlign: TextAlign.center),
+              ]),
+            ],
+          ),
+        ],
       ),
     );
   }
