@@ -1,3 +1,4 @@
+import 'package:fitness_record/screen/fitness_detail_screen.dart';
 import 'package:flutter/material.dart';
 
 class FitnessScreen extends StatefulWidget {
@@ -37,9 +38,17 @@ class _FitnessScreenState extends State<FitnessScreen> {
               ]),
               TableRow(
                   children: [
-                Text("벤치 프레스",
-                    style: TextStyle(fontSize: 10),
-                    textAlign: TextAlign.center),
+                InkWell(
+                  onTap: (){
+                    Navigator.of(context).push(MaterialPageRoute(
+                        fullscreenDialog: true,builder: (BuildContext context){
+                      return FitnessDetailScreen(fitnessname: "벤치 프레스");
+                    }));
+                  },
+                  child: Text("벤치 프레스",
+                      style: TextStyle(fontSize: 10),
+                      textAlign: TextAlign.center),
+                ),
                 Text("가슴",
                     style: TextStyle(fontSize: 10),
                     textAlign: TextAlign.center),
@@ -48,9 +57,17 @@ class _FitnessScreenState extends State<FitnessScreen> {
                     textAlign: TextAlign.center),
               ]),
               TableRow(children: [
-                Text("데드리프트",
-                    style: TextStyle(fontSize: 10),
-                    textAlign: TextAlign.center),
+                InkWell(
+                  onTap: (){
+                    Navigator.of(context).push(MaterialPageRoute(
+                        fullscreenDialog: true,builder: (BuildContext context){
+                      return FitnessDetailScreen(fitnessname: "데드리프트");
+                    }));
+                  },
+                  child: Text("데드리프트",
+                      style: TextStyle(fontSize: 10),
+                      textAlign: TextAlign.center),
+                ),
                 Text("등",
                     style: TextStyle(fontSize: 10),
                     textAlign: TextAlign.center),
@@ -59,9 +76,17 @@ class _FitnessScreenState extends State<FitnessScreen> {
                     textAlign: TextAlign.center),
               ]),
               TableRow(children: [
-                Text("스쿼트",
-                    style: TextStyle(fontSize: 10),
-                    textAlign: TextAlign.center),
+                InkWell(
+                  onTap: (){
+                    Navigator.of(context).push(MaterialPageRoute(
+                        fullscreenDialog: true,builder: (BuildContext context){
+                      return FitnessDetailScreen(fitnessname: "스쿼트");
+                    }));
+                  },
+                  child: Text("스쿼트",
+                      style: TextStyle(fontSize: 10),
+                      textAlign: TextAlign.center),
+                ),
                 Text("허벅지",
                     style: TextStyle(fontSize: 10),
                     textAlign: TextAlign.center),
