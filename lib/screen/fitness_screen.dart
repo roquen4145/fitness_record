@@ -18,7 +18,13 @@ class _FitnessScreenState extends State<FitnessScreen> {
       ),
       body: Column(
         children: [
+          Padding(
+            padding: EdgeInsets.all(10),
+          ),
           Text("Fitness List", style: TextStyle(fontSize: 18)),
+          Padding(
+            padding: EdgeInsets.all(20),
+          ),
           // replace with firebase
           Table(
             defaultVerticalAlignment: TableCellVerticalAlignment.middle,
@@ -27,71 +33,73 @@ class _FitnessScreenState extends State<FitnessScreen> {
             children: [
               TableRow(children: [
                 Text("운동이름",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center),
                 Text("부위",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center),
                 Text("RM",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center),
               ]),
-              TableRow(
-                  children: [
+              TableRow(children: [
                 InkWell(
-                  onTap: (){
+                  onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        fullscreenDialog: true,builder: (BuildContext context){
-                      return FitnessDetailScreen(fitnessname: "벤치 프레스");
-                    }));
+                        fullscreenDialog: true,
+                        builder: (BuildContext context) {
+                          return FitnessDetailScreen(fitnessname: "벤치 프레스");
+                        }));
                   },
                   child: Text("벤치 프레스",
-                      style: TextStyle(fontSize: 10),
+                      style: TextStyle(fontSize: 16),
                       textAlign: TextAlign.center),
                 ),
                 Text("가슴",
-                    style: TextStyle(fontSize: 10),
+                    style: TextStyle(fontSize: 16),
                     textAlign: TextAlign.center),
                 Text("100",
-                    style: TextStyle(fontSize: 10),
+                    style: TextStyle(fontSize: 16),
                     textAlign: TextAlign.center),
               ]),
               TableRow(children: [
                 InkWell(
-                  onTap: (){
+                  onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        fullscreenDialog: true,builder: (BuildContext context){
-                      return FitnessDetailScreen(fitnessname: "데드리프트");
-                    }));
+                        fullscreenDialog: true,
+                        builder: (BuildContext context) {
+                          return FitnessDetailScreen(fitnessname: "데드리프트");
+                        }));
                   },
                   child: Text("데드리프트",
-                      style: TextStyle(fontSize: 10),
+                      style: TextStyle(fontSize: 16),
                       textAlign: TextAlign.center),
                 ),
                 Text("등",
-                    style: TextStyle(fontSize: 10),
+                    style: TextStyle(fontSize: 16),
                     textAlign: TextAlign.center),
                 Text("100",
-                    style: TextStyle(fontSize: 10),
+                    style: TextStyle(fontSize: 16),
                     textAlign: TextAlign.center),
               ]),
               TableRow(children: [
                 InkWell(
-                  onTap: (){
+                  onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        fullscreenDialog: true,builder: (BuildContext context){
-                      return FitnessDetailScreen(fitnessname: "스쿼트");
-                    }));
+                        fullscreenDialog: true,
+                        builder: (BuildContext context) {
+                          return FitnessDetailScreen(fitnessname: "스쿼트");
+                        }));
                   },
                   child: Text("스쿼트",
-                      style: TextStyle(fontSize: 10),
+                      style: TextStyle(fontSize: 16),
                       textAlign: TextAlign.center),
                 ),
                 Text("허벅지",
-                    style: TextStyle(fontSize: 10),
+                    style: TextStyle(fontSize: 16),
                     textAlign: TextAlign.center),
                 Text("100",
-                    style: TextStyle(fontSize: 10),
+                    style: TextStyle(fontSize: 16),
                     textAlign: TextAlign.center),
               ]),
             ],
