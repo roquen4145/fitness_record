@@ -41,6 +41,9 @@ class _FitnessScreenState extends State<FitnessScreen> {
                 Text("RM",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center),
+                Text("기록횟수",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center),
               ]),
               TableRow(children: [
                 InkWell(
@@ -59,6 +62,9 @@ class _FitnessScreenState extends State<FitnessScreen> {
                     style: TextStyle(fontSize: 16),
                     textAlign: TextAlign.center),
                 Text("100",
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.center),
+                Text("5",
                     style: TextStyle(fontSize: 16),
                     textAlign: TextAlign.center),
               ]),
@@ -81,6 +87,9 @@ class _FitnessScreenState extends State<FitnessScreen> {
                 Text("100",
                     style: TextStyle(fontSize: 16),
                     textAlign: TextAlign.center),
+                Text("3",
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.center),
               ]),
               TableRow(children: [
                 InkWell(
@@ -99,6 +108,9 @@ class _FitnessScreenState extends State<FitnessScreen> {
                     style: TextStyle(fontSize: 16),
                     textAlign: TextAlign.center),
                 Text("100",
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.center),
+                Text("1",
                     style: TextStyle(fontSize: 16),
                     textAlign: TextAlign.center),
               ]),

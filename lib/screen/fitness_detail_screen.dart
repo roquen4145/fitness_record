@@ -73,6 +73,12 @@ class FitnessDetailScreen extends StatelessWidget {
                 Container(),
               ]),
             ],
+          ),
+          Padding(padding: EdgeInsets.all(40),),
+          Container(
+            child: Center(
+              child: Text("Graph Area"),
+            ),
           )
         ],
       ),
