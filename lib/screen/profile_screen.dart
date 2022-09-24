@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class FitnessProfileScreen extends StatefulWidget {
@@ -16,7 +17,21 @@ class _FitnessProfileScreenState extends State<FitnessProfileScreen> {
         centerTitle: true,
       ),
       body: Center(
-        child: Text("Profile"),
+        child: Column(
+          children: [
+            Text("Profile"),
+            Container(
+              child: IconButton(
+                icon: Icon(Icons.exit_to_app_sharp
+                ,),
+                onPressed: () {
+                  FirebaseAuth.instance.signOut();
+                },
+              ),
+
+            )
+          ],
+        ),
       ),
     );
   }
