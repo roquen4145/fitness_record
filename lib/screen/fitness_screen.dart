@@ -87,10 +87,10 @@ class _FitnessScreenState extends State<FitnessScreen> {
       Text(fitness.bodypart,
           style: TextStyle(fontSize: 16),
           textAlign: TextAlign.center),
-      Text("100",
+      Text("0",
           style: TextStyle(fontSize: 16),
           textAlign: TextAlign.center),
-      Text("5",
+      Text("0",
           style: TextStyle(fontSize: 16),
           textAlign: TextAlign.center),
     ]);
