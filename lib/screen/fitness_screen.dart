@@ -1,5 +1,8 @@
 import 'package:fitness_record/screen/fitness_detail_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+
+import '../model/fitness_model.dart';
 
 class FitnessScreen extends StatefulWidget {
   const FitnessScreen({Key? key}) : super(key: key);
@@ -21,6 +24,77 @@ class _FitnessScreenState extends State<FitnessScreen> {
     });
   }
 
+  Widget _buildBody(BuildContext context) {
+    return StreamBuilder<QuerySnapshot>(
+        stream:
+        FirebaseFirestore.instance.collection('fitness').snapshots(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData)
+            return LinearProgressIndicator();
+          else {
+            return _buildList(context, snapshot.data!.docs);
+          }
+        });
+  }
+
+  Widget _buildList(BuildContext context, List<DocumentSnapshot> snapshot) {
+    List<DocumentSnapshot> searchResults = [];
+    for (DocumentSnapshot d in snapshot) {
+      if (d.data().toString().contains(_fitnessSearchText)) {
+        searchResults.add(d);
+      }
+    }
+    return
+      Table(
+        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+        columnWidths: {0: FlexColumnWidth(), 1: FlexColumnWidth()},
+        border: TableBorder.all(style: BorderStyle.none),
+
+        children: [TableRow(children: [
+          Text("운동이름",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center),
+          Text("부위",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center),
+          Text("RM",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center),
+          Text("기록횟수",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center),
+        ]), ...searchResults
+            .map((data) => _buildListItem(context, data)).toList(),
+        ]
+        );
+  }
+
+  TableRow _buildListItem(BuildContext context, DocumentSnapshot data) {
+    final fitness = Fitness.fromSnapshot(data);
+    return TableRow(children: [
+      InkWell(
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(
+              fullscreenDialog: true,
+              builder: (BuildContext context) {
+                return FitnessDetailScreen(fitnessname: fitness.name);
+              }));
+        },
+        child: Text(fitness.name,
+            style: TextStyle(fontSize: 16),
+            textAlign: TextAlign.center),
+      ),
+      Text(fitness.bodypart,
+          style: TextStyle(fontSize: 16),
+          textAlign: TextAlign.center),
+      Text("100",
+          style: TextStyle(fontSize: 16),
+          textAlign: TextAlign.center),
+      Text("5",
+          style: TextStyle(fontSize: 16),
+          textAlign: TextAlign.center),
+    ]);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,17 +128,17 @@ class _FitnessScreenState extends State<FitnessScreen> {
                 ),
                 suffixIcon: focusNode.hasFocus
                     ? IconButton(
-                  onPressed: () {
-                    setState(() {
-                      _filter.clear();
-                      _fitnessSearchText = "";
-                    });
-                  },
-                  icon: Icon(
-                    Icons.cancel,
-                    size: 20,
-                  ),
-                )
+                        onPressed: () {
+                          setState(() {
+                            _filter.clear();
+                            _fitnessSearchText = "";
+                          });
+                        },
+                        icon: Icon(
+                          Icons.cancel,
+                          size: 20,
+                        ),
+                      )
                     : Container(),
                 hintText: '검색',
                 labelStyle: TextStyle(color: Colors.white),
@@ -81,96 +155,7 @@ class _FitnessScreenState extends State<FitnessScreen> {
             ),
           ),
           // replace with firebase
-          Table(
-            defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-            columnWidths: {0: FlexColumnWidth(), 1: FlexColumnWidth()},
-            border: TableBorder.all(style: BorderStyle.none),
-            children: [
-              TableRow(children: [
-                Text("운동이름",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.center),
-                Text("부위",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.center),
-                Text("RM",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.center),
-                Text("기록횟수",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.center),
-              ]),
-              TableRow(children: [
-                InkWell(
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        fullscreenDialog: true,
-                        builder: (BuildContext context) {
-                          return FitnessDetailScreen(fitnessname: "벤치 프레스");
-                        }));
-                  },
-                  child: Text("벤치 프레스",
-                      style: TextStyle(fontSize: 16),
-                      textAlign: TextAlign.center),
-                ),
-                Text("가슴",
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.center),
-                Text("100",
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.center),
-                Text("5",
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.center),
-              ]),
-              TableRow(children: [
-                InkWell(
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        fullscreenDialog: true,
-                        builder: (BuildContext context) {
-                          return FitnessDetailScreen(fitnessname: "데드리프트");
-                        }));
-                  },
-                  child: Text("데드리프트",
-                      style: TextStyle(fontSize: 16),
-                      textAlign: TextAlign.center),
-                ),
-                Text("등",
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.center),
-                Text("100",
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.center),
-                Text("3",
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.center),
-              ]),
-              TableRow(children: [
-                InkWell(
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        fullscreenDialog: true,
-                        builder: (BuildContext context) {
-                          return FitnessDetailScreen(fitnessname: "스쿼트");
-                        }));
-                  },
-                  child: Text("스쿼트",
-                      style: TextStyle(fontSize: 16),
-                      textAlign: TextAlign.center),
-                ),
-                Text("허벅지",
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.center),
-                Text("100",
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.center),
-                Text("1",
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.center),
-              ]),
-            ],
-          ),
+          _buildBody(context),
         ],
       ),
     );
