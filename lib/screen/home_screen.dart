@@ -37,19 +37,29 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Padding(padding: EdgeInsets.all(10)),
           Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-            Text("N 일/주/월 마다 M번 운동하기"),
-            DirectSelect(
-              itemExtent: 60,
-              items: _buildItems1(),
-              child: MySelectionItem(
-                isForList: false,
-                title: period[selectedPeriod]
-              ),
-              onSelectedItemChanged: (index){
-                setState(() {
-                  selectedPeriod = index!;
-                });
-              },
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("매 N "),
+                Container(
+                  width: 70,
+                  height: 40,
+                  child: DirectSelect(
+                    itemExtent: 60,
+                    items: _buildItems1(),
+                    child: MySelectionItem(
+                      isForList: false,
+                      title: period[selectedPeriod]
+                    ),
+                    onSelectedItemChanged: (index){
+                      setState(() {
+                        selectedPeriod = index!;
+                      });
+                    },
+                  ),
+                ),
+                Text("마다 N번 운동하기"),
+              ],
             ),
           ]),
           Padding(padding: EdgeInsets.all(20)),
@@ -91,7 +101,6 @@ class MySelectionItem extends StatelessWidget {
         padding: EdgeInsets.all(10.0),
       )
           : Card(
-        margin: EdgeInsets.symmetric(horizontal: 10.0),
         child: Stack(
           children: <Widget>[
             _buildItem(context),
