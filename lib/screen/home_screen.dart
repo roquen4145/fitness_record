@@ -12,12 +12,16 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final period = ["일", "주", "월"];
   int selectedPeriod = 0;
+  final workout_period_text_controller = TextEditingController();
+  int workout_period_text = 0;
+  final workout_number_text_controller = TextEditingController();
+  int workout_number_text = 0;
 
   List<Widget> _buildItems1() {
     return period
         .map((val) => MySelectionItem(
-      title: val,
-    ))
+              title: val,
+            ))
         .toList();
   }
 
@@ -41,7 +45,14 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text("매 "),
-                SizedBox(width: 30,child: TextField(textAlign: TextAlign.center,),),
+                SizedBox(
+                  width: 30,
+                  child: TextField(
+                    textAlign: TextAlign.center,
+                    controller: workout_period_text_controller..text = '0',
+                    onChanged: (text){},
+                  ),
+                ),
                 Container(
                   width: 70,
                   height: 40,
@@ -49,10 +60,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemExtent: 60,
                     items: _buildItems1(),
                     child: MySelectionItem(
-                      isForList: false,
-                      title: period[selectedPeriod]
-                    ),
-                    onSelectedItemChanged: (index){
+                        isForList: false, title: period[selectedPeriod]),
+                    onSelectedItemChanged: (index) {
                       setState(() {
                         selectedPeriod = index!;
                       });
@@ -60,7 +69,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 Text("마다 "),
-                SizedBox(width: 30,child: TextField(textAlign: TextAlign.center,),),
+                SizedBox(
+                  width: 30,
+                  child: TextField(
+                    textAlign: TextAlign.center,
+                    controller: workout_number_text_controller..text = '0',
+                    onChanged: (text){},
+                  ),
+                ),
                 Text("번 운동하기"),
               ],
             ),
@@ -100,22 +116,23 @@ class MySelectionItem extends StatelessWidget {
       height: 60.0,
       child: isForList
           ? Padding(
-        child: _buildItem(context),
-        padding: EdgeInsets.all(10.0),
-      )
-          : Card(
-        child: Stack(
-          children: <Widget>[
-            _buildItem(context),
-            Align(
-              alignment: Alignment.centerRight,
-              child: Icon(Icons.arrow_drop_down),
+              child: _buildItem(context),
+              padding: EdgeInsets.all(10.0),
             )
-          ],
-        ),
-      ),
+          : Card(
+              child: Stack(
+                children: <Widget>[
+                  _buildItem(context),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Icon(Icons.arrow_drop_down),
+                  )
+                ],
+              ),
+            ),
     );
   }
+
   _buildItem(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
