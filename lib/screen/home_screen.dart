@@ -40,7 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("매 N "),
+                Text("매 "),
+                SizedBox(width: 30,child: TextField(textAlign: TextAlign.center,),),
                 Container(
                   width: 70,
                   height: 40,
@@ -58,7 +59,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                   ),
                 ),
-                Text("마다 N번 운동하기"),
+                Text("마다 "),
+                SizedBox(width: 30,child: TextField(textAlign: TextAlign.center,),),
+                Text("번 운동하기"),
               ],
             ),
           ]),
