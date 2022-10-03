@@ -87,6 +87,7 @@ class _FitnessScreenState extends State<FitnessScreen> {
       Text(fitness.bodypart,
           style: TextStyle(fontSize: 16),
           textAlign: TextAlign.center),
+      // To get this value, we have to initialize personal fitness collection of firebase
       Text("0",
           style: TextStyle(fontSize: 16),
           textAlign: TextAlign.center),

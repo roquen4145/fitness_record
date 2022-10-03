@@ -34,6 +34,8 @@ class FitnessDetailScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center),
               ]),
+              // To load this values, we have to create detail collection
+              // with key { user_id, fitness_id }
               TableRow(children: [
                 Text("1",
                     style: TextStyle(fontSize: 16),
