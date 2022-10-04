@@ -88,6 +88,9 @@ class _FitnessScreenState extends State<FitnessScreen> {
           style: TextStyle(fontSize: 16),
           textAlign: TextAlign.center),
       // To get this value, we have to initialize personal fitness collection of firebase
+      // TODO : convert document name in fitness collection to fitness name
+      // And create every collection for each fitness,
+      // Add document with name 'uid' of each user contains values of RM and Record num
       Text("0",
           style: TextStyle(fontSize: 16),
           textAlign: TextAlign.center),

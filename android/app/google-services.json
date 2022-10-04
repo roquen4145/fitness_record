@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1094704288580",
+    "project_id": "fitness-record-75959",
+    "storage_bucket": "fitness-record-75959.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1094704288580:android:cb86e336c37723e451fd11",
+        "android_client_info": {
+          "package_name": "com.roquen4145.fitness_record"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1094704288580-4dthlhpbeb7lusoa8f15cn1dljjrf3v0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-KVr_QeKbPeoWYTuX3QaHJ3UlY-wBQMo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1094704288580-4dthlhpbeb7lusoa8f15cn1dljjrf3v0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
