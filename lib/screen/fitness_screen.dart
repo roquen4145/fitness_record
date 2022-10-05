@@ -70,21 +70,21 @@ class _FitnessScreenState extends State<FitnessScreen> {
   }
 
   TableRow _buildListItem(BuildContext context, DocumentSnapshot data) {
-    final fitness = Fitness.fromSnapshot(data);
+    // final fitness = Fitness.fromSnapshot(data);
     return TableRow(children: [
       InkWell(
         onTap: () {
           Navigator.of(context).push(MaterialPageRoute(
               fullscreenDialog: true,
               builder: (BuildContext context) {
-                return FitnessDetailScreen(fitnessname: fitness.name);
+                return FitnessDetailScreen(fitnessname: "운동이름");
               }));
         },
-        child: Text(fitness.name,
+        child: Text("운동이름",
             style: TextStyle(fontSize: 16),
             textAlign: TextAlign.center),
       ),
-      Text(fitness.bodypart,
+      Text("운동부위",
           style: TextStyle(fontSize: 16),
           textAlign: TextAlign.center),
       // To get this value, we have to initialize personal fitness collection of firebase
