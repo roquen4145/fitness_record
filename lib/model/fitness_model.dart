@@ -1,13 +1,13 @@
 class Fitness {
-  final int id;
-  final String name;
-  final String bodypart;
-  final String uid;
-  final String memo;
-  final double rm;
+  int? id;
+  String name;
+  String bodypart;
+  String uid;
+  String memo;
+  double rm;
 
   Fitness(
-      {required this.id,
+      {this.id,
       required this.name,
       required this.bodypart,
       required this.uid,
@@ -27,11 +27,11 @@ class Fitness {
 }
 
 class FitnessRecord {
-  final String uid;
-  final int fid;
-  final int setNum;
-  final double weight;
-  final DateTime time;
+  String uid;
+  int fid;
+  int setNum;
+  double weight;
+  String time;
 
   FitnessRecord(
       {required this.uid,
