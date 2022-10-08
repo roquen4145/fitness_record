@@ -26,8 +26,7 @@ class _FitnessScreenState extends State<FitnessScreen> {
 
   Widget _buildBody(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-        stream:
-        FirebaseFirestore.instance.collection('fitness').snapshots(),
+        stream: FirebaseFirestore.instance.collection('fitness').snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData)
             return LinearProgressIndicator();
@@ -44,29 +43,29 @@ class _FitnessScreenState extends State<FitnessScreen> {
         searchResults.add(d);
       }
     }
-    return
-      Table(
+    return Table(
         defaultVerticalAlignment: TableCellVerticalAlignment.middle,
         columnWidths: {0: FlexColumnWidth(), 1: FlexColumnWidth()},
         border: TableBorder.all(style: BorderStyle.none),
-
-        children: [TableRow(children: [
-          Text("운동이름",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center),
-          Text("부위",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center),
-          Text("RM",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center),
-          Text("기록횟수",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center),
-        ]), ...searchResults
-            .map((data) => _buildListItem(context, data)).toList(),
-        ]
-        );
+        children: [
+          TableRow(children: [
+            Text("운동이름",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center),
+            Text("부위",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center),
+            Text("RM",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center),
+            Text("기록횟수",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center),
+          ]),
+          ...searchResults
+              .map((data) => _buildListItem(context, data))
+              .toList(),
+        ]);
   }
 
   TableRow _buildListItem(BuildContext context, DocumentSnapshot data) {
@@ -81,24 +80,18 @@ class _FitnessScreenState extends State<FitnessScreen> {
               }));
         },
         child: Text("운동이름",
-            style: TextStyle(fontSize: 16),
-            textAlign: TextAlign.center),
+            style: TextStyle(fontSize: 16), textAlign: TextAlign.center),
       ),
-      Text("운동부위",
-          style: TextStyle(fontSize: 16),
-          textAlign: TextAlign.center),
+      Text("운동부위", style: TextStyle(fontSize: 16), textAlign: TextAlign.center),
       // To get this value, we have to initialize personal fitness collection of firebase
       // TODO : convert document name in fitness collection to fitness name
       // And create every collection for each fitness,
       // Add document with name 'uid' of each user contains values of RM and Record num
-      Text("0",
-          style: TextStyle(fontSize: 16),
-          textAlign: TextAlign.center),
-      Text("0",
-          style: TextStyle(fontSize: 16),
-          textAlign: TextAlign.center),
+      Text("0", style: TextStyle(fontSize: 16), textAlign: TextAlign.center),
+      Text("0", style: TextStyle(fontSize: 16), textAlign: TextAlign.center),
     ]);
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
