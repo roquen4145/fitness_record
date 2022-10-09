@@ -11,6 +11,16 @@ class FitnessFields {
   static final String rm = 'rm';
 }
 
+class FitnessRecordFields {
+  static final List<String> values = [uid, fid, setNum, weight, time];
+
+  static final String uid = 'uid';
+  static final String fid = 'fid';
+  static final String setNum = 'setNum';
+  static final String weight = 'weight';
+  static final String time = 'time';
+}
+
 class Fitness {
   int? id;
   String name;
