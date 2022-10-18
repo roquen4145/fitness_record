@@ -73,7 +73,7 @@ CREATE TABLE $tableFitness (
     }
   }
 
-  Future<List<Fitness>> readAllNotes() async {
+  Future<List<Fitness>> readAllFitness() async {
     final db = await instance.database;
 
     final orderBy = '${FitnessFields.name} ASC';

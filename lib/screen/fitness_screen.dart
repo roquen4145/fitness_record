@@ -2,6 +2,7 @@ import 'package:fitness_record/screen/fitness_detail_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+import '../db/fitness_database.dart';
 import '../model/fitness_model.dart';
 
 class FitnessScreen extends StatefulWidget {
@@ -15,6 +16,22 @@ class _FitnessScreenState extends State<FitnessScreen> {
   final TextEditingController _filter = TextEditingController();
   FocusNode focusNode = FocusNode();
   String _fitnessSearchText = "";
+  late List<Fitness> fitness_list;
+  bool isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    refreshFitnessList();
+  }
+
+  Future refreshFitnessList() async {
+    setState(() => isLoading = true);
+
+    this.fitness_list = await FitnessDatabase.instance.readAllFitness();
+
+    setState(() => isLoading = false);
+  }
 
   _FitnessScreenState() {
     _filter.addListener(() {
@@ -153,6 +170,8 @@ class _FitnessScreenState extends State<FitnessScreen> {
           ),
           // replace with firebase
           _buildBody(context),
+          Container(child: Text("sqflite test")),
+          Container()
         ],
       ),
     );
