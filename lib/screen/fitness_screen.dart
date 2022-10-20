@@ -1,6 +1,7 @@
 import 'package:fitness_record/screen/fitness_detail_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../db/fitness_database.dart';
 import '../model/fitness_model.dart';
@@ -142,17 +143,17 @@ class _FitnessScreenState extends State<FitnessScreen> {
                 ),
                 suffixIcon: focusNode.hasFocus
                     ? IconButton(
-                        onPressed: () {
-                          setState(() {
-                            _filter.clear();
-                            _fitnessSearchText = "";
-                          });
-                        },
-                        icon: Icon(
-                          Icons.cancel,
-                          size: 20,
-                        ),
-                      )
+                  onPressed: () {
+                    setState(() {
+                      _filter.clear();
+                      _fitnessSearchText = "";
+                    });
+                  },
+                  icon: Icon(
+                    Icons.cancel,
+                    size: 20,
+                  ),
+                )
                     : Container(),
                 hintText: '검색',
                 labelStyle: TextStyle(color: Colors.white),
@@ -171,9 +172,35 @@ class _FitnessScreenState extends State<FitnessScreen> {
           // replace with firebase
           _buildBody(context),
           Container(child: Text("sqflite test")),
-          Container()
+          Center(
+            child: isLoading ?
+            CircularProgressIndicator()
+                : fitness_list.isEmpty ?
+            Text('No Fitnesss', style: TextStyle(fontSize: 24))
+                : buildFitnessList(),
+          )
         ],
       ),
     );
   }
+
+  Widget buildFitnessList() =>
+      StaggeredGridView.countBuilder(crossAxisCount: 4,
+        itemBuilder: (context, index) {
+          final fitness = fitness_list[index];
+
+          return GestureDetector(
+            onTap: () async {
+              await Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) =>
+                      FitnessDetailScreen(fitnessname: fitness.name)));
+
+              refreshFitnessList();
+            },
+            // child: FitnessCardWidget()
+
+          );
+        },
+        staggeredTileBuilder: (index) => StaggeredTile.fit(2),
+      );
 }
