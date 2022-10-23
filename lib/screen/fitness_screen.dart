@@ -1,5 +1,4 @@
 import 'package:fitness_record/screen/fitness_detail_screen.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
@@ -40,74 +39,6 @@ class _FitnessScreenState extends State<FitnessScreen> {
         _fitnessSearchText = _filter.text;
       });
     });
-  }
-
-  Widget _buildBody(BuildContext context) {
-    return StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance.collection('fitness').snapshots(),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData)
-            return LinearProgressIndicator();
-          else {
-            return _buildList(context, snapshot.data!.docs);
-          }
-        });
-  }
-
-  Widget _buildList(BuildContext context, List<DocumentSnapshot> snapshot) {
-    List<DocumentSnapshot> searchResults = [];
-    for (DocumentSnapshot d in snapshot) {
-      if (d.data().toString().contains(_fitnessSearchText)) {
-        searchResults.add(d);
-      }
-    }
-    return Table(
-        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-        columnWidths: {0: FlexColumnWidth(), 1: FlexColumnWidth()},
-        border: TableBorder.all(style: BorderStyle.none),
-        children: [
-          TableRow(children: [
-            Text("운동이름",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center),
-            Text("부위",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center),
-            Text("RM",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center),
-            Text("기록횟수",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center),
-          ]),
-          ...searchResults
-              .map((data) => _buildListItem(context, data))
-              .toList(),
-        ]);
-  }
-
-  TableRow _buildListItem(BuildContext context, DocumentSnapshot data) {
-    // final fitness = Fitness.fromSnapshot(data);
-    return TableRow(children: [
-      InkWell(
-        onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(
-              fullscreenDialog: true,
-              builder: (BuildContext context) {
-                return FitnessDetailScreen(fitnessname: "운동이름");
-              }));
-        },
-        child: Text("운동이름",
-            style: TextStyle(fontSize: 16), textAlign: TextAlign.center),
-      ),
-      Text("운동부위", style: TextStyle(fontSize: 16), textAlign: TextAlign.center),
-      // To get this value, we have to initialize personal fitness collection of firebase
-      // TODO : convert document name in fitness collection to fitness name
-      // And create every collection for each fitness,
-      // Add document with name 'uid' of each user contains values of RM and Record num
-      Text("0", style: TextStyle(fontSize: 16), textAlign: TextAlign.center),
-      Text("0", style: TextStyle(fontSize: 16), textAlign: TextAlign.center),
-    ]);
   }
 
   @override
@@ -169,8 +100,6 @@ class _FitnessScreenState extends State<FitnessScreen> {
               ),
             ),
           ),
-          // replace with firebase
-          _buildBody(context),
           Container(child: Text("sqflite test")),
           Center(
             child: isLoading ?
@@ -204,3 +133,29 @@ class _FitnessScreenState extends State<FitnessScreen> {
         staggeredTileBuilder: (index) => StaggeredTile.fit(2),
       );
 }
+
+/*
+Table(
+        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+        columnWidths: {0: FlexColumnWidth(), 1: FlexColumnWidth()},
+        border: TableBorder.all(style: BorderStyle.none),
+        children: [
+          TableRow(children: [
+            Text("운동이름",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center),
+            Text("부위",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center),
+            Text("RM",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center),
+            Text("기록횟수",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center),
+          ]),
+          ...searchResults
+              .map((data) => _buildListItem(context, data))
+              .toList(),
+        ]);
+ */
