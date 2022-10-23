@@ -4,6 +4,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../db/fitness_database.dart';
 import '../model/fitness_model.dart';
+import 'add_edit_fitness_screen.dart';
 
 class FitnessScreen extends StatefulWidget {
   const FitnessScreen({Key? key}) : super(key: key);
@@ -74,17 +75,17 @@ class _FitnessScreenState extends State<FitnessScreen> {
                 ),
                 suffixIcon: focusNode.hasFocus
                     ? IconButton(
-                  onPressed: () {
-                    setState(() {
-                      _filter.clear();
-                      _fitnessSearchText = "";
-                    });
-                  },
-                  icon: Icon(
-                    Icons.cancel,
-                    size: 20,
-                  ),
-                )
+                        onPressed: () {
+                          setState(() {
+                            _filter.clear();
+                            _fitnessSearchText = "";
+                          });
+                        },
+                        icon: Icon(
+                          Icons.cancel,
+                          size: 20,
+                        ),
+                      )
                     : Container(),
                 hintText: '검색',
                 labelStyle: TextStyle(color: Colors.white),
@@ -102,19 +103,28 @@ class _FitnessScreenState extends State<FitnessScreen> {
           ),
           Container(child: Text("sqflite test")),
           Center(
-            child: isLoading ?
-            CircularProgressIndicator()
-                : fitness_list.isEmpty ?
-            Text('No Fitnesss', style: TextStyle(fontSize: 24))
-                : buildFitnessList(),
+            child: isLoading
+                ? CircularProgressIndicator()
+                : fitness_list.isEmpty
+                    ? Text('No Fitnesss', style: TextStyle(fontSize: 24))
+                    : buildFitnessList(),
           )
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Color.fromRGBO(157, 172, 220, 100),
+        child: Icon(Icons.add),
+        onPressed: () async {
+          await Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => AddEditFitnessScreen()),
+          );
+        },
       ),
     );
   }
 
-  Widget buildFitnessList() =>
-      StaggeredGridView.countBuilder(crossAxisCount: 4,
+  Widget buildFitnessList() => StaggeredGridView.countBuilder(
+        crossAxisCount: 4,
         itemBuilder: (context, index) {
           final fitness = fitness_list[index];
 
@@ -127,7 +137,6 @@ class _FitnessScreenState extends State<FitnessScreen> {
               refreshFitnessList();
             },
             // child: FitnessCardWidget()
-
           );
         },
         staggeredTileBuilder: (index) => StaggeredTile.fit(2),
