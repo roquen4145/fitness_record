@@ -1,4 +1,3 @@
-import 'package:fitness_record/screen/diet_screen.dart';
 import 'package:fitness_record/screen/fitness_screen.dart';
 import 'package:fitness_record/screen/home_screen.dart';
 import 'package:fitness_record/screen/profile_screen.dart';
@@ -24,14 +23,13 @@ class MyApp extends StatelessWidget {
                 primary: Colors.black,
                 secondary: Colors.white)),
         home: DefaultTabController(
-            length: 4,
+            length: 3,
             child: Scaffold(
               resizeToAvoidBottomInset: false,
               body: TabBarView(
                 children: [
                   HomeScreen(),
                   FitnessScreen(),
-                  DietScreen(),
                   FitnessProfileScreen()
                 ],
               ),

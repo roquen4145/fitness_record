@@ -1,4 +1,4 @@
-import  'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 class BottomBar extends StatelessWidget {
   const BottomBar({Key? key}) : super(key: key);
@@ -15,35 +15,16 @@ class BottomBar extends StatelessWidget {
             indicatorColor: Colors.transparent,
             tabs: [
               Tab(
-                  icon: Icon(
-                      Icons.home,
-                      size: 18
-                  ),
-                  child: Text('홈', style: TextStyle(fontSize:11))),
+                  icon: Icon(Icons.home, size: 18),
+                  child: Text('홈', style: TextStyle(fontSize: 11))),
               Tab(
-                  icon: Icon(
-                      Icons.fitness_center,
-                      size: 18
-                  ),
-                  child: Text('운동', style: TextStyle(fontSize:11))),
-
+                  icon: Icon(Icons.fitness_center, size: 18),
+                  child: Text('운동', style: TextStyle(fontSize: 11))),
               Tab(
-                  icon: Icon(
-                      Icons.food_bank,
-                      size: 18
-                  ),
-                  child: Text('식단', style: TextStyle(fontSize:11))),
-
-              Tab(
-                  icon: Icon(
-                      Icons.person,
-                      size: 18
-                  ),
-                  child: Text('프로필', style: TextStyle(fontSize:11))),
-
+                  icon: Icon(Icons.person, size: 18),
+                  child: Text('프로필', style: TextStyle(fontSize: 11))),
             ],
           ),
-        )
-    );
+        ));
   }
 }
