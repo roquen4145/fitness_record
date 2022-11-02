@@ -1,3 +1,4 @@
+import 'package:fitness_record/widget/fitness_form.dart';
 import 'package:flutter/material.dart';
 
 import '../model/fitness_model.dart';
@@ -29,7 +30,13 @@ class _AddEditFitnessScreenState extends State<AddEditFitnessScreen> {
         appBar: AppBar(
           actions: [buildButton()],
         ),
-        body: Form(key: _formKey, child: Container()),
+        body: Form(key: _formKey, child: FitnessFormWidget(
+          name: name,
+          bodypart: bodypart,
+          onChangedTitle: (name) => setState(() => this.name = name),
+          onChangedDescription: (bodypart) =>
+              setState(() => this.bodypart = bodypart),
+        )),
       );
 
   Widget buildButton() {
