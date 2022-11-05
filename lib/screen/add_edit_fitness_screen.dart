@@ -33,8 +33,8 @@ class _AddEditFitnessScreenState extends State<AddEditFitnessScreen> {
         body: Form(key: _formKey, child: FitnessFormWidget(
           name: name,
           bodypart: bodypart,
-          onChangedTitle: (name) => setState(() => this.name = name),
-          onChangedDescription: (bodypart) =>
+          onChangedName: (name) => setState(() => this.name = name),
+          onChangedBodypart: (bodypart) =>
               setState(() => this.bodypart = bodypart),
         )),
       );
