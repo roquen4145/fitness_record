@@ -3,15 +3,19 @@ import 'package:flutter/material.dart';
 class FitnessFormWidget extends StatelessWidget {
   final String? name;
   final String? bodypart;
+  final String? memo;
   final ValueChanged<String> onChangedName;
   final ValueChanged<String> onChangedBodypart;
+  final ValueChanged<String> onChangedMemo;
 
   const FitnessFormWidget({
     Key? key,
     this.name = '',
     this.bodypart = '',
+    this.memo = '',
     required this.onChangedName,
     required this.onChangedBodypart,
+    required this.onChangedMemo,
   }) : super(key: key);
 
   @override
@@ -24,6 +28,8 @@ class FitnessFormWidget extends StatelessWidget {
               buildName(),
               SizedBox(height: 8),
               buildBodypart(),
+              SizedBox(height: 16),
+              buildMemo(),
               SizedBox(height: 16),
             ],
           ),
@@ -62,4 +68,19 @@ class FitnessFormWidget extends StatelessWidget {
             : null,
         onChanged: onChangedBodypart,
       );
+
+  Widget buildMemo() => TextFormField(
+    maxLines: 1,
+    initialValue: memo,
+    style: TextStyle(color: Colors.black, fontSize: 18),
+    decoration: InputDecoration(
+      border: InputBorder.none,
+      hintText: 'input any memo',
+      hintStyle: TextStyle(color: Colors.black12),
+    ),
+    validator: (memo) => memo != null && memo.isEmpty
+        ? 'The memo cannot be empty'
+        : null,
+    onChanged: onChangedMemo,
+  );
 }

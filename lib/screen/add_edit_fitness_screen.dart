@@ -16,6 +16,7 @@ class _AddEditFitnessScreenState extends State<AddEditFitnessScreen> {
   final _formKey = GlobalKey<FormState>();
   late String name;
   late String bodypart;
+  late String memo;
 
   @override
   void initState() {
@@ -36,6 +37,8 @@ class _AddEditFitnessScreenState extends State<AddEditFitnessScreen> {
           onChangedName: (name) => setState(() => this.name = name),
           onChangedBodypart: (bodypart) =>
               setState(() => this.bodypart = bodypart),
+          onChangedMemo: (memo) =>
+              setState(() => this.memo = memo),
         )),
       );
 
@@ -46,8 +49,7 @@ class _AddEditFitnessScreenState extends State<AddEditFitnessScreen> {
       padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          onPrimary: Colors.white,
-          primary: isFormValid ? null : Colors.grey.shade700,
+          foregroundColor: Colors.white, backgroundColor: isFormValid ? null : Colors.grey.shade700,
         ),
         onPressed: () {},
         child: Text('Save'),
