@@ -101,7 +101,7 @@ class _FitnessScreenState extends State<FitnessScreen> {
               ),
             ),
           ),
-          Container(child: Text("sqflite test")),
+          SizedBox(height: 10),
           Center(
             child: isLoading
                 ? CircularProgressIndicator()
