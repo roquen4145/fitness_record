@@ -78,9 +78,6 @@ class FitnessFormWidget extends StatelessWidget {
       hintText: 'input any memo',
       hintStyle: TextStyle(color: Colors.black12),
     ),
-    validator: (memo) => memo != null && memo.isEmpty
-        ? 'The memo cannot be empty'
-        : null,
     onChanged: onChangedMemo,
   );
 }
