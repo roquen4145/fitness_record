@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../db/fitness_database.dart';
 import '../model/fitness_model.dart';
+import 'dart:developer';
 
 class AddEditFitnessScreen extends StatefulWidget {
   final Fitness? fitness;
@@ -66,14 +67,17 @@ class _AddEditFitnessScreenState extends State<AddEditFitnessScreen> {
 
     if (isValid) {
       final isUpdating = widget.fitness != null;
-
+      log("Trying to add or update");
       if (isUpdating) {
         await updateFitness();
       } else {
         await addFitness();
       }
-
+      log("added or updated");
       Navigator.of(context).pop();
+    }
+    else {
+      log("Invalid");
     }
   }
 
