@@ -97,7 +97,7 @@ class _AddEditFitnessScreenState extends State<AddEditFitnessScreen> {
       bodypart: bodypart,
       uid: '',
       memo: memo,
-      rm: 0,
+      rm: 0.0,
     );
 
     await FitnessDatabase.instance.create(note);
