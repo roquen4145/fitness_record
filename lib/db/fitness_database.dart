@@ -111,4 +111,13 @@ CREATE TABLE $tableFitness (
 
     db.close();
   }
+
+  deleteAllFitness() async {
+    final db = await instance.database;
+
+    final orderBy = '${FitnessFields.name} ASC';
+    final result = await db.query(tableFitness, orderBy: orderBy);
+    
+    return await db.rawDelete("delete from fitness");
+  }
 }

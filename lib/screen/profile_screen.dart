@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../db/fitness_database.dart';
+
 class FitnessProfileScreen extends StatefulWidget {
   const FitnessProfileScreen({Key? key}) : super(key: key);
 
@@ -17,9 +19,17 @@ class _FitnessProfileScreenState extends State<FitnessProfileScreen> {
       ),
       body: Center(
         child: Column(
-          children: [Text("Profile"), Container()],
+          children: [
+            Text("Profile"),
+            Container(),
+            TextButton(onPressed: DeleteButton, child: Text("Delete All"))
+          ],
         ),
       ),
     );
+  }
+
+  void DeleteButton() async {
+    await FitnessDatabase.instance.deleteAllFitness();
   }
 }
