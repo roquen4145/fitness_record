@@ -82,6 +82,7 @@ class _AddEditFitnessScreenState extends State<AddEditFitnessScreen> {
   }
 
   Future updateFitness() async {
+    log("update fitness");
     final note = widget.fitness!.copy(
       name : name,
       bodypart: bodypart,
@@ -92,6 +93,7 @@ class _AddEditFitnessScreenState extends State<AddEditFitnessScreen> {
   }
 
   Future addFitness() async {
+    log("add fitness");
     final note = Fitness(
       name: name,
       bodypart: bodypart,
