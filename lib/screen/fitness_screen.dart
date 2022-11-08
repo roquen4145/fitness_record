@@ -29,7 +29,7 @@ class _FitnessScreenState extends State<FitnessScreen> {
   Future refreshFitnessList() async {
     setState(() => isLoading = true);
 
-    this.fitness_list = await FitnessDatabase.instance.readAllFitness();
+    fitness_list = await FitnessDatabase.instance.readAllFitness();
 
     setState(() => isLoading = false);
   }
@@ -118,6 +118,8 @@ class _FitnessScreenState extends State<FitnessScreen> {
           await Navigator.of(context).push(
             MaterialPageRoute(builder: (context) => AddEditFitnessScreen()),
           );
+
+          refreshFitnessList();
         },
       ),
     );
