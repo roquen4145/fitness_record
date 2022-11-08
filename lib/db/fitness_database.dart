@@ -28,6 +28,7 @@ class FitnessDatabase {
     final textType = 'TEXT NOT NULL';
     final boolType = 'BOOLEAN NOT NULL';
     final integerType = 'INTEGER NOT NULL';
+    final floatType = 'REAL NOT NULL';
 
     await db.execute('''
 CREATE TABLE $tableFitness ( 
@@ -36,7 +37,7 @@ CREATE TABLE $tableFitness (
   ${FitnessFields.bodypart} $textType,
   ${FitnessFields.uid} $textType,
   ${FitnessFields.memo} $textType,
-  ${FitnessFields.rm} $integerType
+  ${FitnessFields.rm} $floatType
   )
 ''');
   }
