@@ -125,24 +125,11 @@ class _FitnessScreenState extends State<FitnessScreen> {
     );
   }
 
-  Widget buildFitnessList() => StaggeredGridView.countBuilder(
-        crossAxisCount: 4,
-        itemBuilder: (context, index) {
-          final fitness = fitness_list[index];
-
-          return GestureDetector(
-            onTap: () async {
-              await Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) =>
-                      FitnessDetailScreen(fitnessname: fitness.name)));
-
-              refreshFitnessList();
-            },
-            // child: FitnessCardWidget()
-          );
-        },
-        staggeredTileBuilder: (index) => StaggeredTile.fit(2),
-      );
+  Widget buildFitnessList() {
+    return Column(
+      children: fitness_list.map((data) {return Text(data.name);}).toList(),
+    );
+  }
 }
 
 /*

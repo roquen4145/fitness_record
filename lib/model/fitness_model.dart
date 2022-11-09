@@ -69,7 +69,7 @@ class Fitness {
       bodypart: json[FitnessFields.bodypart] as String,
       uid: json[FitnessFields.uid] as String,
       memo: json[FitnessFields.memo] as String,
-      rm: json[FitnessFields.rm] as double);
+      rm: double.parse(json[FitnessFields.rm].toString()));
 
   Map<String, Object?> toJson() => {
     FitnessFields.id : id,
@@ -77,7 +77,7 @@ class Fitness {
     FitnessFields.bodypart : bodypart,
     FitnessFields.uid : uid,
     FitnessFields.memo : memo,
-    FitnessFields.rm : rm,
+    FitnessFields.rm : rm.toString(),
   };
 }
 
