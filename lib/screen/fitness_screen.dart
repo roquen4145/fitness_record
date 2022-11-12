@@ -126,14 +126,7 @@ class _FitnessScreenState extends State<FitnessScreen> {
   }
 
   Widget buildFitnessList() {
-    return Column(
-      children: fitness_list.map((data) {return Text(data.name);}).toList(),
-    );
-  }
-}
-
-/*
-Table(
+    return Table(
         defaultVerticalAlignment: TableCellVerticalAlignment.middle,
         columnWidths: {0: FlexColumnWidth(), 1: FlexColumnWidth()},
         border: TableBorder.all(style: BorderStyle.none),
@@ -152,8 +145,17 @@ Table(
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center),
           ]),
-          ...searchResults
-              .map((data) => _buildListItem(context, data))
-              .toList(),
+          // ...searchResults
+          //     .map((data) => _buildListItem(context, data))
+          //     .toList(),
         ]);
- */
+  }
+  //   Column(
+  //     children: fitness_list.map((data) {return Text(data.name);}).toList(),
+  //   );
+  // }
+
+  _buildListItem(context, data) {
+
+  }
+}
