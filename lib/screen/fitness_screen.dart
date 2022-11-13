@@ -126,6 +126,12 @@ class _FitnessScreenState extends State<FitnessScreen> {
   }
 
   Widget buildFitnessList() {
+    List<Fitness> searchResults = [];
+    for (Fitness f in fitness_list) {
+      if (f.name.contains(_fitnessSearchText)) {
+        searchResults.add(f);
+      }
+    }
     return Table(
         defaultVerticalAlignment: TableCellVerticalAlignment.middle,
         columnWidths: {0: FlexColumnWidth(), 1: FlexColumnWidth()},
@@ -145,9 +151,9 @@ class _FitnessScreenState extends State<FitnessScreen> {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center),
           ]),
-          // ...searchResults
-          //     .map((data) => _buildListItem(context, data))
-          //     .toList(),
+          ...searchResults
+              .map((data) => _buildListItem(context, data))
+              .toList(),
         ]);
   }
   //   Column(
@@ -155,7 +161,30 @@ class _FitnessScreenState extends State<FitnessScreen> {
   //   );
   // }
 
-  _buildListItem(context, data) {
-
+  TableRow _buildListItem(BuildContext context, Fitness fitness) {
+    return TableRow(children: [
+      InkWell(
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(
+              fullscreenDialog: true,
+              builder: (BuildContext context) {
+                return FitnessDetailScreen(fitnessname: fitness.name);
+              }));
+        },
+        child: Text(fitness.name,
+            style: TextStyle(fontSize: 16),
+            textAlign: TextAlign.center),
+      ),
+      Text(fitness.bodypart,
+          style: TextStyle(fontSize: 16),
+          textAlign: TextAlign.center),
+      // To get this value, we have to initialize personal fitness collection of firebase
+      Text("0",
+          style: TextStyle(fontSize: 16),
+          textAlign: TextAlign.center),
+      Text("0",
+          style: TextStyle(fontSize: 16),
+          textAlign: TextAlign.center),
+    ]);
   }
 }
