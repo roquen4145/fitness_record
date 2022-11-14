@@ -1,9 +1,11 @@
 import "package:flutter/material.dart";
 
+import '../model/fitness_model.dart';
+
 class FitnessDetailScreen extends StatelessWidget {
-  const FitnessDetailScreen({Key? key, required this.fitnessname})
+  const FitnessDetailScreen({Key? key, required this.fitness})
       : super(key: key);
-  final String fitnessname;
+  final Fitness fitness;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class FitnessDetailScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(5),
           ),
-          Text(fitnessname), // TODO: fitness.bodypart
+          Text(fitness.bodypart),
           Padding(
             padding: EdgeInsets.all(20),
           ),
@@ -28,6 +30,7 @@ class FitnessDetailScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(5),
           ),
+          // TODO: add how to area
           Text("역시 마찬가지로, 단순히 고통이라는 이유 때문에 고통 그 자체를 사랑하거나 추구하거나 소유하려는 자는 없다."),
           Padding(
             padding: EdgeInsets.all(20),
@@ -37,7 +40,7 @@ class FitnessDetailScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(5),
           ),
-          Text(fitnessname), // TODO: fitness.memo
+          Text(fitness.memo),
           Padding(
             padding: EdgeInsets.all(20),
           ),
@@ -110,7 +113,7 @@ class FitnessDetailScreen extends StatelessWidget {
         ],
       ),
       appBar: AppBar(
-        title: Text(fitnessname),
+        title: Text(fitness.name),
         centerTitle: true,
       ),
     );

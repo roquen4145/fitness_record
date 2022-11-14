@@ -168,7 +168,7 @@ class _FitnessScreenState extends State<FitnessScreen> {
           Navigator.of(context).push(MaterialPageRoute(
               fullscreenDialog: true,
               builder: (BuildContext context) {
-                return FitnessDetailScreen(fitnessname: fitness.name);
+                return FitnessDetailScreen(fitness: fitness);
               }));
         },
         child: Text(fitness.name,
