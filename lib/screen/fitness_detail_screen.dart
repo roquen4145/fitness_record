@@ -1,23 +1,46 @@
 import "package:flutter/material.dart";
 
 class FitnessDetailScreen extends StatelessWidget {
-  const FitnessDetailScreen({Key? key, required this.fitnessname}) : super(key: key);
+  const FitnessDetailScreen({Key? key, required this.fitnessname})
+      : super(key: key);
   final String fitnessname;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Padding(padding: EdgeInsets.all(10),),
-          Text("운동 방법", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          Padding(
+            padding: EdgeInsets.all(10),
+          ),
+          Text("운동 부위",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          Padding(
+            padding: EdgeInsets.all(5),
+          ),
+          Text(fitnessname), // TODO: fitness.bodypart
+          Padding(
+            padding: EdgeInsets.all(20),
+          ),
+          Text("운동 방법",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           Padding(
             padding: EdgeInsets.all(5),
           ),
           Text("역시 마찬가지로, 단순히 고통이라는 이유 때문에 고통 그 자체를 사랑하거나 추구하거나 소유하려는 자는 없다."),
-          Padding(padding: EdgeInsets.all(20),),
-          Text("기구 세팅", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-          Padding(padding: EdgeInsets.all(20),),
+          Padding(
+            padding: EdgeInsets.all(20),
+          ),
+          Text("메모",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          Padding(
+            padding: EdgeInsets.all(5),
+          ),
+          Text(fitnessname), // TODO: fitness.memo
+          Padding(
+            padding: EdgeInsets.all(20),
+          ),
           Table(
             defaultVerticalAlignment: TableCellVerticalAlignment.middle,
             columnWidths: {0: FlexColumnWidth(), 1: FlexColumnWidth()},
@@ -76,7 +99,9 @@ class FitnessDetailScreen extends StatelessWidget {
               ]),
             ],
           ),
-          Padding(padding: EdgeInsets.all(40),),
+          Padding(
+            padding: EdgeInsets.all(40),
+          ),
           Container(
             child: Center(
               child: Text("Graph Area"),
