@@ -61,7 +61,9 @@ class FitnessDetailScreen extends StatelessWidget {
                     textAlign: TextAlign.center),
               ]),
               // To load this values, we have to create detail collection
-              // with key { user_id, fitness_id }
+              // with key { fitness_id, date }
+              // and we have to add database works
+              // load_fitness_set_info(fitness_id, today);
               TableRow(children: [
                 Text("1",
                     style: TextStyle(fontSize: 16),
