@@ -12,9 +12,7 @@ class FitnessFields {
 }
 
 class FitnessRecordFields {
-  static final List<String> values = [uid, fid, setNum, weight, time];
-
-  static final String uid = 'uid';
+  static final List<String> values = [ fid, setNum, weight, time];
   static final String fid = 'fid';
   static final String setNum = 'setNum';
   static final String weight = 'weight';
@@ -82,22 +80,19 @@ class Fitness {
 }
 
 class FitnessRecord {
-  String uid;
   int fid;
   int setNum;
   double weight;
   String time;
 
   FitnessRecord(
-      {required this.uid,
-      required this.fid,
+      {required this.fid,
       required this.setNum,
       required this.weight,
       required this.time});
 
   Map<String, dynamic> toMap() {
     return {
-      'uid': uid,
       'fid': fid,
       'setNum': setNum,
       'weight': weight,
