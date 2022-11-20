@@ -40,6 +40,15 @@ CREATE TABLE $tableFitness (
   ${FitnessFields.rm} $floatType
   )
 ''');
+
+    await db.execute('''
+CREATE TABLE $tableFitnessRecord ( 
+  ${FitnessRecordFields.fid} $idType, 
+  ${FitnessRecordFields.setNum} $integerType,
+  ${FitnessRecordFields.weight} $floatType,
+  ${FitnessRecordFields.time} $textType,
+  )
+''');
   }
 
   Future<Fitness> create(Fitness fitness) async {

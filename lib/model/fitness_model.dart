@@ -1,4 +1,5 @@
 final String tableFitness = 'fitness';
+final String tableFitnessRecord = 'fitnessRecord';
 
 class FitnessFields {
   static final List<String> values = [id, name, bodypart, uid, memo, rm];
