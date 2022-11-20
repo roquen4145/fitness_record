@@ -2,11 +2,17 @@ import "package:flutter/material.dart";
 
 import '../model/fitness_model.dart';
 
-class FitnessDetailScreen extends StatelessWidget {
+class FitnessDetailScreen extends StatefulWidget {
   const FitnessDetailScreen({Key? key, required this.fitness})
       : super(key: key);
   final Fitness fitness;
 
+  @override
+  State<FitnessDetailScreen> createState() => _FitnessDetailScreenState();
+}
+
+class _FitnessDetailScreenState extends State<FitnessDetailScreen> {
+  late List<FitnessRecord> fitnessRecords;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +27,7 @@ class FitnessDetailScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(5),
           ),
-          Text(fitness.bodypart),
+          Text(widget.fitness.bodypart),
           Padding(
             padding: EdgeInsets.all(20),
           ),
@@ -40,7 +46,7 @@ class FitnessDetailScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(5),
           ),
-          Text(fitness.memo),
+          Text(widget.fitness.memo),
           Padding(
             padding: EdgeInsets.all(20),
           ),
@@ -115,7 +121,7 @@ class FitnessDetailScreen extends StatelessWidget {
         ],
       ),
       appBar: AppBar(
-        title: Text(fitness.name),
+        title: Text(widget.fitness.name),
         centerTitle: true,
       ),
     );
