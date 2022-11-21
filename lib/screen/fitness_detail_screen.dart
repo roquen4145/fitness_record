@@ -18,12 +18,18 @@ class _FitnessDetailScreenState extends State<FitnessDetailScreen> {
   late List<FitnessRecord> fitnessRecords;
   bool isLoading = false;
 
-  Future refreshFitnessList() async {
+  Future refreshFitnessRecordList() async {
     setState(() => isLoading = true);
 
     fitnessRecords = await FitnessDatabase.instance.readAllFitnessRecords(widget.fitness.id);
 
     setState(() => isLoading = false);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    refreshFitnessRecordList();
   }
 
   @override
