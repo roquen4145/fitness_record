@@ -13,7 +13,7 @@ class FitnessFields {
 }
 
 class FitnessRecordFields {
-  static final List<String> values = [ fid, setNum, weight, time];
+  static final List<String> values = [fid, setNum, weight, time];
   static final String fid = 'fid';
   static final String setNum = 'setNum';
   static final String weight = 'weight';
@@ -71,13 +71,13 @@ class Fitness {
       rm: double.parse(json[FitnessFields.rm].toString()));
 
   Map<String, Object?> toJson() => {
-    FitnessFields.id : id,
-    FitnessFields.name : name,
-    FitnessFields.bodypart : bodypart,
-    FitnessFields.uid : uid,
-    FitnessFields.memo : memo,
-    FitnessFields.rm : rm.toString(),
-  };
+        FitnessFields.id: id,
+        FitnessFields.name: name,
+        FitnessFields.bodypart: bodypart,
+        FitnessFields.uid: uid,
+        FitnessFields.memo: memo,
+        FitnessFields.rm: rm.toString(),
+      };
 }
 
 class FitnessRecord {
@@ -100,4 +100,10 @@ class FitnessRecord {
       'time': time,
     };
   }
+
+  static fromJson(Map<String, Object?> json) => FitnessRecord(
+      fid: json[FitnessRecordFields.fid] as int,
+      setNum: json[FitnessRecordFields.setNum] as int,
+      weight: double.parse(json[FitnessRecordFields.weight].toString()),
+      time: json[FitnessRecordFields.time].toString());
 }

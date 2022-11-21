@@ -16,6 +16,16 @@ class FitnessDetailScreen extends StatefulWidget {
 
 class _FitnessDetailScreenState extends State<FitnessDetailScreen> {
   late List<FitnessRecord> fitnessRecords;
+  bool isLoading = false;
+
+  Future refreshFitnessList() async {
+    setState(() => isLoading = true);
+
+    fitnessRecords = await FitnessDatabase.instance.readAllFitnessRecords(widget.fitness.id);
+
+    setState(() => isLoading = false);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

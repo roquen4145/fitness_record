@@ -130,4 +130,17 @@ CREATE TABLE $tableFitnessRecord (
     
     return await db.rawDelete("delete from fitness");
   }
+
+  readAllFitnessRecords(int? id) async {
+    final db = await instance.database;
+
+    final orderBy = '${FitnessRecordFields.setNum} ASC';
+    // final result =
+    //     await db.rawQuery('SELECT * FROM $tableNotes ORDER BY $orderBy');
+    final where = 'WHERE ${FitnessRecordFields.fid} = id';
+
+    final result = await db.query(tableFitness, orderBy: orderBy, where: where);
+
+    return result.map((json) => FitnessRecord.fromJson(json)).toList();
+  }
 }
