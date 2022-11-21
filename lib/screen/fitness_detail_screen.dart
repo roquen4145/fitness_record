@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import "package:flutter/material.dart";
 
+import '../db/fitness_database.dart';
 import '../model/fitness_model.dart';
 
 class FitnessDetailScreen extends StatefulWidget {
@@ -123,7 +126,28 @@ class _FitnessDetailScreenState extends State<FitnessDetailScreen> {
       appBar: AppBar(
         title: Text(widget.fitness.name),
         centerTitle: true,
+        actions: [buildButton()],
       ),
     );
+  }
+
+  Widget buildButton() {
+    final isFormValid = fitnessRecords.isNotEmpty;
+
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          foregroundColor: Colors.white,
+          backgroundColor: isFormValid ? null : Colors.grey.shade700,
+        ),
+        onPressed: addOrUpdateFitnessRecords,
+        child: Text('Save'),
+      ),
+    );
+  }
+
+  void addOrUpdateFitnessRecords() async {
+
   }
 }
