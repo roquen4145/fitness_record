@@ -137,9 +137,10 @@ CREATE TABLE $tableFitnessRecord (
     final orderBy = '${FitnessRecordFields.setNum} ASC';
     // final result =
     //     await db.rawQuery('SELECT * FROM $tableNotes ORDER BY $orderBy');
-    final where = 'WHERE ${FitnessRecordFields.fid} = id';
+    final where = '${FitnessRecordFields.fid} = ?';
+    final whereArg = [id];
 
-    final result = await db.query(tableFitness, orderBy: orderBy, where: where);
+    final result = await db.query(tableFitnessRecord, orderBy: orderBy, where: where, whereArgs: whereArg);
 
     return result.map((json) => FitnessRecord.fromJson(json)).toList();
   }
