@@ -69,65 +69,12 @@ class _FitnessDetailScreenState extends State<FitnessDetailScreen> {
           Padding(
             padding: EdgeInsets.all(20),
           ),
-          Table(
-            defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-            columnWidths: {0: FlexColumnWidth(), 1: FlexColumnWidth()},
-            border: TableBorder.all(style: BorderStyle.none),
-            children: [
-              TableRow(children: [
-                Text("세트 수",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.center),
-                Text("무게",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.center),
-                Text("횟수",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.center),
-              ]),
-              // To load this values, we have to create detail collection
-              // with key { fitness_id, date }
-              // and we have to add database works
-              // load_fitness_set_info(fitness_id, today);
-              TableRow(children: [
-                Text("1",
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.center),
-                Text("50",
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.center),
-                Text("12",
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.center),
-              ]),
-              TableRow(children: [
-                Text("2",
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.center),
-                Text("60",
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.center),
-                Text("10",
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.center),
-              ]),
-              TableRow(children: [
-                Text("3",
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.center),
-                Text("70",
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.center),
-                Text("8",
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.center),
-              ]),
-              TableRow(children: [
-                Container(),
-                Icon(Icons.add), // add a new row
-                Container(),
-              ]),
-            ],
+          Center(
+            child: isLoading
+                ? CircularProgressIndicator()
+                : fitnessRecords.isEmpty
+                ? Text('No Fitnesss', style: TextStyle(fontSize: 24))
+                : buildFitnessRecordList(),
           ),
           Padding(
             padding: EdgeInsets.all(40),
@@ -144,6 +91,70 @@ class _FitnessDetailScreenState extends State<FitnessDetailScreen> {
         centerTitle: true,
         actions: [buildButton()],
       ),
+    );
+  }
+
+  Widget buildFitnessRecordList() {
+
+    return Table(
+      defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+      columnWidths: {0: FlexColumnWidth(), 1: FlexColumnWidth()},
+      border: TableBorder.all(style: BorderStyle.none),
+      children: [
+        TableRow(children: [
+          Text("세트 수",
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center),
+          Text("무게",
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center),
+          Text("횟수",
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center),
+        ]),
+        // To load this values, we have to create detail collection
+        // with key { fitness_id, date }
+        // and we have to add database works
+        // load_fitness_set_info(fitness_id, today);
+        TableRow(children: [
+          Text("1",
+              style: TextStyle(fontSize: 16),
+              textAlign: TextAlign.center),
+          Text("50",
+              style: TextStyle(fontSize: 16),
+              textAlign: TextAlign.center),
+          Text("12",
+              style: TextStyle(fontSize: 16),
+              textAlign: TextAlign.center),
+        ]),
+        TableRow(children: [
+          Text("2",
+              style: TextStyle(fontSize: 16),
+              textAlign: TextAlign.center),
+          Text("60",
+              style: TextStyle(fontSize: 16),
+              textAlign: TextAlign.center),
+          Text("10",
+              style: TextStyle(fontSize: 16),
+              textAlign: TextAlign.center),
+        ]),
+        TableRow(children: [
+          Text("3",
+              style: TextStyle(fontSize: 16),
+              textAlign: TextAlign.center),
+          Text("70",
+              style: TextStyle(fontSize: 16),
+              textAlign: TextAlign.center),
+          Text("8",
+              style: TextStyle(fontSize: 16),
+              textAlign: TextAlign.center),
+        ]),
+        TableRow(children: [
+          Container(),
+          Icon(Icons.add), // add a new row
+          Container(),
+        ]),
+      ],
     );
   }
 
