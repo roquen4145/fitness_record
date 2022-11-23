@@ -22,14 +22,19 @@ class _FitnessProfileScreenState extends State<FitnessProfileScreen> {
           children: [
             Text("Profile"),
             Container(),
-            TextButton(onPressed: DeleteButton, child: Text("Delete All"))
+            TextButton(onPressed: DeleteFitnessListButton, child: Text("Delete Fitness List")),
+            TextButton(onPressed: DeleteDatabaseButton, child: Text("Delete Database")),
           ],
         ),
       ),
     );
   }
 
-  void DeleteButton() async {
+  void DeleteFitnessListButton() async {
     await FitnessDatabase.instance.deleteAllFitness();
+  }
+
+  void DeleteDatabaseButton() async {
+    await FitnessDatabase.instance.deleteDB('fitness.db');
   }
 }

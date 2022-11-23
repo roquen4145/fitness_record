@@ -46,7 +46,7 @@ CREATE TABLE $tableFitnessRecord (
   ${FitnessRecordFields.fid} $idType, 
   ${FitnessRecordFields.setNum} $integerType,
   ${FitnessRecordFields.weight} $floatType,
-  ${FitnessRecordFields.time} $textType,
+  ${FitnessRecordFields.time} $textType
   )
 ''');
   }
@@ -129,6 +129,12 @@ CREATE TABLE $tableFitnessRecord (
     final result = await db.query(tableFitness, orderBy: orderBy);
     
     return await db.rawDelete("delete from fitness");
+  }
+
+  deleteDB(String path) async {
+    final dbPath = await getDatabasesPath();
+    final path = join(dbPath, 'fitness.db');
+    deleteDatabase(path);
   }
 
   readAllFitnessRecords(int? id) async {
